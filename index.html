@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    📚 Library Admin Dashboard
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </header>
+  <main>
+    <!-- Stats Section -->
+    <div class="stats">
+      <div class="card">
+        <h3>Total Books</h3>
+        <div class="stat-value" id="totalBooks">0</div>
+      </div>
+      <div class="card">
+        <h3>Issued Books</h3>
+        <div class="stat-value" id="issuedBooks">0</div>
+      </div>
+      <div class="card">
+        <h3>Available Books</h3>
+        <div class="stat-value" id="availableBooks">0</div>
+      </div>
+      <div class="card">
+        <h3>Total Members</h3>
+        <div class="stat-value" id="totalMembers">0</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="card actions">
+      <h2>Actions</h2>
+      <button onclick="showSection('issue')">Issue Book</button>
+      <button onclick="showSection('return')">Return Book</button>
+      <button onclick="showSection('addMember')">Add Member</button>
+      <button onclick="showSection('addBook')">Add Book</button>
+      <button onclick="showSection('scan')">Scan Entry</button>
+      <button onclick="showSection('remove')">Remove</button>
+
+
+    </div>
+
+    <!-- Export Section -->
+<div class="card">
+  <h2>Export Actions</h2>
+  <button onclick="exportPDF()">📄 Export Report (PDF)</button>
+</div>
+
+
+    <!-- Dynamic Forms -->
+    <div id="forms" class="card"></div>
+    <div class="search-container">
+  <input type="text" id="searchInput" placeholder="🔍 Search books or members...">
+</div>
+
+
+    <!-- Books Table -->
+    <div class="card">
+      <h2>Books</h2>
+      <table id="booksTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Issued Count</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Members Table -->
+    <div class="card">
+      <h2>Members</h2>
+      <table id="membersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+ <script src="script.js"></script>
+</body>
+</html>
+<button onclick="logout()" style="float:right;">Logout</button>

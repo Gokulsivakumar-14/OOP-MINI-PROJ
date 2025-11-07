@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login – Library</title>
+
+<!-- ✅ Particles JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* ✅ LIVE BACKGROUND */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #090b38, #1d22a6);
+    z-index: -1;
+  }
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    width: 350px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 0px 25px rgba(255,255,255,0.3);
+    position: relative;
+    z-index: 5;
+  }
+
+  .login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    background: #3739ff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #0000d5;
+  }
+
+  .error {
+    margin-top: 10px;
+    color: rgb(255, 151, 151);
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ✅ BACKGROUND -->
+<div id="particles-js"></div>
+
+<div class="login-container">
+  <div class="login-card">
+    <h2>ADMIN LOGIN</h2>
+
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
+    <p class="error" id="errorMsg"></p>
+  </div>
+</div>
+
+<!-- ✅ PARTICLES CONFIG -->
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 75 },
+    "color": { "value": "#ffffff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 4 },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#4a4de7",
+      "opacity": 0.6,
+      "width": 1.5
+    },
+    "move": { "speed": 2.5 }
+  }
+});
+</script>
+
+<!-- ✅ LOGIN SCRIPT -->
+<script>
+  // Prevent entering dashboard without login
+  if (localStorage.getItem("adminLoggedIn") === "true") {
+    window.location.href = "index.html";
+  }
+
+  function login() {
+    const adminUser = "";  // CHANGE HERE
+    const adminPass = "";   // CHANGE HERE
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if (user === adminUser && pass === adminPass) {
+      localStorage.setItem("adminLoggedIn", "true");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("errorMsg").innerText = "❌ Invalid Username or Password";
+    }
+  }
+</script>
+
+</body>
+</html>

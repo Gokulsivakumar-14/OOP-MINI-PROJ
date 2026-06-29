@@ -462,3 +462,26 @@ function logout() {
   localStorage.removeItem("adminLoggedIn");
   window.location.href = "login.html";
 }
+
+function updateDateTime(){
+  const now = new Date();
+
+  const time = now.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+
+  const date = now.toLocaleDateString([], {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+
+  document.getElementById("time").innerText = time;
+  document.getElementById("date").innerText = date;
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
